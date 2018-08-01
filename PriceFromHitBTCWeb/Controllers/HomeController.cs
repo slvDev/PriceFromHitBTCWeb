@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using PriceFromHitBTCWeb.Data;
 using PriceFromHitBTCWeb.Models;
 
 
@@ -12,24 +13,21 @@ namespace PriceFromHitBTCWeb.Controllers
 {
     public class HomeController : Controller
     {
+
+        private CoinsRepository _coinsRepository = null;
+
+        public HomeController()
+        {
+            _coinsRepository = new CoinsRepository();
+        }
+
         public IActionResult Index()
         {
-            var returnPrice = GetCoinPrice();
+            var returnPrice = _coinsRepository.GetCoinPrice();
             return View(returnPrice);
 
         }
 
-        public Coin GetCoinPrice()
-        {
-
-            var client = new WebClient();
-            string jsonData = client.DownloadString("https://api.hitbtc.com/api/2/public/ticker/BTCUSD");
-
-            var coin = new Coin();
-            coin = JsonConvert.DeserializeObject<Coin>(jsonData);
-
-            return coin;
-        }
 
     }
 }
