@@ -8,11 +8,11 @@ namespace PriceFromHitBTCWeb.Data
     public class CoinsRepository
     {
 
-        public Coin GetCoinPrice()
+        public Coin GetCoinPrice(string symbol)
         {
-
+            
             var client = new WebClient();
-            string jsonData = client.DownloadString("https://api.hitbtc.com/api/2/public/ticker/BTCUSD");
+            string jsonData = client.DownloadString("https://api.hitbtc.com/api/2/public/ticker/" + symbol);
 
             var coin = new Coin();
             coin = JsonConvert.DeserializeObject<Coin>(jsonData);

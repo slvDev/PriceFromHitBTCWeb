@@ -23,11 +23,17 @@ namespace PriceFromHitBTCWeb.Controllers
 
         public IActionResult Index()
         {
-            var returnPrice = _coinsRepository.GetCoinPrice();
-            return View(returnPrice);
+            return View();
 
         }
 
+        [HttpPost]
+        public IActionResult Index(Coin coin)
+        {
+            var returnCoin = _coinsRepository.GetCoinPrice(coin.Symbol);
+            ViewBag.Price = returnCoin.Last;
+            return View(returnCoin);
 
+        }
     }
 }
