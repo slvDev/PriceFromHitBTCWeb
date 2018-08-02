@@ -6,23 +6,17 @@ using System.Threading.Tasks;
 namespace PriceFromHitBTCWeb.Models
 {
     public class SymbolModel
-    {
-
-        public class SymbolList
-        {
-            public List<Symbol> Symbols { get; set; }
-        }
-
+    {   
         public class Symbol
         {
-            public string id { get; set; }
-            public string baseCurrency { get; set; }
-            public string quoteCurrency { get; set; }
-            public string quantityIncrement { get; set; }
-            public string tickSize { get; set; }
-            public string takeLiquidityRate { get; set; }
-            public string provideLiquidityRate { get; set; }
-            public string feeCurrency { get; set; }
+            public string Id { get; set; }
+            public string BaseCurrency { get; set; }
+            public string QuoteCurrency { get; set; }
+            public string QuantityIncrement { get; set; }
+            public string TickSize { get; set; }
+            public string TakeLiquidityRate { get; set; }
+            public string ProvideLiquidityRate { get; set; }
+            public string FeeCurrency { get; set; }
         }
 
     }

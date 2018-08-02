@@ -23,8 +23,9 @@ namespace PriceFromHitBTCWeb.Controllers
 
         public IActionResult Index()
         {
-            var something = _coinsRepository.GetAllSymbols();
-            var coin = something[4].baseCurrency;
+
+            ViewBag.AllSymbols = _coinsRepository.GetAllSymbols();
+            
             return View();
 
         }

@@ -16,8 +16,7 @@ namespace PriceFromHitBTCWeb.Data
             var client = new WebClient();
             string jsonData = client.DownloadString("https://api.hitbtc.com/api/2/public/ticker/" + symbol);
 
-            var coin = new Coin();
-            coin = JsonConvert.DeserializeObject<Coin>(jsonData);
+            var coin = JsonConvert.DeserializeObject<Coin>(jsonData);
 
             return coin;
         }
@@ -27,7 +26,6 @@ namespace PriceFromHitBTCWeb.Data
             var client = new WebClient();
             string jsonData = client.DownloadString("https://api.hitbtc.com/api/2/public/symbol/");
 
-            //var allSymbols = new Symbol();
             var allSymbols = JsonConvert.DeserializeObject<List<Symbol>>(jsonData);
 
             return allSymbols;
