@@ -24,8 +24,10 @@ namespace PriceFromHitBTCWeb.Controllers
         public IActionResult Index()
         {
 
-            ViewBag.AllSymbols = _coinsRepository.GetAllSymbols();
-            
+            var allSymbols = _coinsRepository.GetAllSymbols();
+
+            ViewBag.AllSymbols = allSymbols.Where(t => t.Id.Contains("USD")).ToList();
+
             return View();
 
         }
@@ -33,7 +35,9 @@ namespace PriceFromHitBTCWeb.Controllers
         [HttpPost]
         public IActionResult Index(Coin coin)
         {
-            ViewBag.AllSymbols = _coinsRepository.GetAllSymbols();
+            var allSymbols = _coinsRepository.GetAllSymbols();
+
+            ViewBag.AllSymbols = allSymbols.Where(t => t.Id.Contains("USD")).ToList();
 
             var returnCoin = _coinsRepository.GetCoinPrice(coin.Symbol);
             ViewBag.Price = returnCoin.Last;
