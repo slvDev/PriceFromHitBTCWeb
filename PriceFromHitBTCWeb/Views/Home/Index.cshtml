@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-
+    var symbols = ViewBag.AllSymbols;
 }
 
 
@@ -12,13 +12,12 @@
     <form method="post">
 
         <div class="form-group">
-            <input type="text" class="form-control" id="Symbol" name="Symbol" />
+            @*<input type="text" class="form-control" id="Symbol" name="Symbol" />*@
 
-            <label for="exampleFormControlSelect1">Select the symbol</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-                @foreach (var s in ViewBag.AllSymbols)
+            <select class="form-control" id="Symbol" name="Symbol">
+                @foreach (var symbol in symbols)
                 {
-                    <option>@s.Id</option>
+                    <option>@symbol.Id</option>
                 }
 
             </select>

@@ -33,6 +33,8 @@ namespace PriceFromHitBTCWeb.Controllers
         [HttpPost]
         public IActionResult Index(Coin coin)
         {
+            ViewBag.AllSymbols = _coinsRepository.GetAllSymbols();
+
             var returnCoin = _coinsRepository.GetCoinPrice(coin.Symbol);
             ViewBag.Price = returnCoin.Last;
             return View(returnCoin);
